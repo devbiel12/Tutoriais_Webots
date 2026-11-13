@@ -11,7 +11,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.36613080351383115 -0.34684144928746163 0.8635098399986473 4.512861216507618
-  position 0.040655054304304536 1.3400124385486203 1.2265452046683387
+  position 0.07780921844053842 2.026277044954918 1.9370920131443041
 }
 TexturedBackground {
 }
@@ -93,7 +93,7 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 1 0.03 0.5
+        size 1 0.03 0.25
       }
     }
   ]
@@ -110,7 +110,7 @@ Solid {
   boundingObject USE WALL_SHAPE
 }
 Solid {
-  translation 0.475 0 0
+  translation 0.484 0 0
   rotation 0 0 1 1.5708
   children [
     USE WALL_SHAPE

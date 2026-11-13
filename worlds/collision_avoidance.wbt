@@ -1,0 +1,127 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.4006751714394478 -0.3853089180703063 0.8312619591004144 4.490328093805823
+  position 0.33677963416302403 1.4355899119650901 2.028608661376782
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+E-puck {
+  translation -0.0238556 0.0433398 -3.12629e-05
+  rotation -0.00013053927897905542 4.741161322068429e-05 0.9999999903558178 2.441971684987004
+  controller "epuck_avoid_collision"
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0.24146327193184744 -0.23105170632453187 0.04996076000194819
+  rotation -5.526872964621409e-12 1.0090690742448058e-12 -1 0.11343232357842661
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.19516 0.233779 0.0499608
+  rotation 8.6680102876278e-06 -3.9904350443652216e-06 0.9999999999544711 0.0007529606740591636
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.32429013527185474 -0.10946024855786524 0.04996075998496657
+  rotation 9.604733483691764e-09 -1.315889692119919e-08 0.9999999999999999 0.013013739911319006
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+Solid {
+  translation -0.40871701753839834 -0.3354153604639526 0.04958907968091044
+  rotation 0.29258075668903016 -0.8530769867142086 0.43203721547325086 -2.9919969362397234
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation -0.23872049246283863 0.33453829771776444 0.09671263744728362
+  rotation -0.9669628516850031 0.15704839768407164 0.20079503043171326 0.8369522370483286
+  children [
+    DEF BALL_SHAPE Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE BALL_SHAPE
+  physics Physics {
+  }
+}
+Solid {
+  translation 0 0.49 0
+  rotation 0 1 0 0
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 1 0.03 0.25
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0 -0.49 0
+  rotation 0 1 0 0
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(3)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.487 0 0
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(4)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation -0.49 0 0
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(5)"
+  boundingObject USE WALL_SHAPE
+}
