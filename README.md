@@ -24,10 +24,7 @@ Webots/
 │   ├── obstacles.wbt
 │   ├── appearance.wbt
 │   └── red_brick_wall.jpg
-│
-├── libraries/
-├── plugins/
-└── protos/
+
 ```
 
 ## 🤖 Simulações desenvolvidas
