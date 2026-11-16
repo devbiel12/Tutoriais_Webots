@@ -1,0 +1,183 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.27880115166305314 -0.23638135031544355 -0.9308027584050247 4.477799985100194
+  position 0.5577975130467713 -1.2029610572704055 1.2529027932992083
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+E-puck {
+  translation -0.0631482 -0.0280403 -3.14232e-05
+  rotation 7.063543255129705e-08 2.3322026412619223e-08 -0.9999999999999973 2.7987562473110823
+  controller "epuck_avoid_collision"
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation 0.24145469819410673 -0.231062625302626 0.049960760000000035
+  rotation 4.571173398134819e-16 5.858237830866967e-16 -0.9999999999999999 0.11323627594293385
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation 0.19537310255539495 0.23397169230434162 0.049960760000000014
+  rotation -8.509845740313533e-14 2.283206011226732e-13 0.9999999999999999 0.00461472636499578
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+WoodenBox {
+  translation -0.3242901352633335 -0.10946024855156003 0.04996075999999999
+  rotation 2.7971617118404014e-15 8.401749945044797e-17 0.9999999999999999 0.01301373991131901
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+Solid {
+  translation -0.40871701753839834 -0.3354153604639526 0.04958907968091044
+  rotation -0.29258075668903016 0.8530769867142088 -0.43203721547325086 2.9919969362397234
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "esfera1"
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation -0.23872049246283863 0.33453829771776444 0.09671263744728362
+  rotation -0.9669628516850028 0.1570483976840716 0.20079503043171323 0.8369522370483287
+  children [
+    DEF BALL_SHAPE Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Sphere {
+        radius 0.1
+      }
+    }
+  ]
+  name "esfera2"
+  boundingObject USE BALL_SHAPE
+  physics Physics {
+  }
+}
+Solid {
+  translation 0 0.49 0
+  rotation 0 1 0 0
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 1 0.03 0.25
+      }
+    }
+  ]
+  name "parede1"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0 -0.49 0
+  rotation 0 1 0 0
+  children [
+    USE WALL_SHAPE
+  ]
+  name "parede2"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.487 0 0
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "parede3"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation -0.49 0 0
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "parede4"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0 0.2 0.02
+  rotation 0 1 0 1.5708
+  children [
+    DEF DEF_G0_GROUP Group {
+      children [
+        Pose {
+          translation 0 0 -0.05
+          children [
+            Shape {
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.05
+          children [
+            Shape {
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+  name "dumbell"
+  contactMaterial "haltere"
+  boundingObject USE DEF_G0_GROUP
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [
+      0 0 0.01
+    ]
+  }
+}

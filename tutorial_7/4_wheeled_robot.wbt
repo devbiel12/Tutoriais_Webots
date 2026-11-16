@@ -1,0 +1,224 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/FourWheelsRobot.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.35309559042213173 -0.19014352295345793 0.9160616489643554 4.058152344402123
+  position 1.6172834553678328 2.811990085316774 2.808604957815126
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+Solid {
+  translation 0 0.49 0
+  rotation 0 1 0 0
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 1 0.03 0.25
+      }
+    }
+  ]
+  name "parede1"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0 -0.49 0
+  rotation 0 1 0 0
+  children [
+    USE WALL_SHAPE
+  ]
+  name "parede2"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.485 0 0
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "parede3"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation -0.49 0 0
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "parede4"
+  boundingObject USE WALL_SHAPE
+}
+Robot {
+  translation 0.14164587687853467 0.08071027662986346 0.039861494504103236
+  rotation -5.776519273976801e-05 0.00016754299329965977 0.9999999842962639 -2.391379133889452
+  children [
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 380.51971096328776
+        axis 0 1 0
+        anchor 0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL1 Solid {
+        translation 0.05 0.06 0
+        rotation -0.13724780263222944 0.7004139621179523 -0.7004165348868174 3.4143829366272995
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PH Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 194.92398265929484
+        axis 0 1 0
+        anchor 0.05 -0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 -0.06 0
+        rotation -0.99474953715459 -0.07236476995035482 0.0723650357614853 4.707121036581697
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 380.51973846023117
+        axis 0 1 0
+        anchor -0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0.06 0
+        rotation -0.137257613687496 0.7004130008365131 -0.7004155736018473 3.4144021958571584
+        children [
+          USE WHEEL
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 194.92401660845923
+        axis 0 1 0
+        anchor -0.05 -0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 -0.06 0
+        rotation -0.9947470930155031 -0.07238156688187718 0.07238183275470635 4.707118579573105
+        children [
+          USE WHEEL
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PH
+      }
+    }
+    DistanceSensor {
+      translation 0.1 -0.03 0
+      rotation 0 0 1 -0.3
+      children [
+        DEF DS_SHAPE Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      boundingObject USE DS_SHAPE
+    }
+    DistanceSensor {
+      translation 0.1 0.03 0
+      rotation 0 0 1 0.3
+      children [
+        USE DS_SHAPE
+      ]
+      name "ds_left"
+      boundingObject USE DS_SHAPE
+    }
+  ]
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "four_wheeled_collision_avoidance"
+  linearVelocity -0.029265523393139623 -0.02727357674619641 -1.4194792373696272e-07
+  angularVelocity 0.00011030560113194939 -3.771349062858092e-05 1.808034605754948e-05
+}
+FourWheelsRobot {
+  hidden position_0_0 -2.427272387525084e-08
+  hidden position_0_1 3.3863278771645916e-08
+  hidden position_0_2 -6.587838575935296e-08
+  hidden position_0_3 3.339232003515579e-08
+  hidden linearVelocity_0 3.1356650332479625e-06 5.607928995752468e-07 1.4254931724621707e-07
+  hidden angularVelocity_0 -7.976215105071446e-05 2.156095242637608e-05 2.1561221161651034e-05
+  hidden rotation_1 0.9999999999999998 -1.2136317358360688e-08 1.2136361937625422e-08 1.5708
+  hidden rotation_2 0.9999999999999998 1.6931577192552982e-08 -1.693163938582296e-08 1.5708
+  hidden rotation_3 0.999999999999999 -3.293907188748731e-08 3.293919287967647e-08 1.570800000000001
+  hidden rotation_4 0.9999999999999998 1.6696098689270352e-08 -1.6696160017577897e-08 1.5708
+  translation 0.3061685323200372 -0.009108675100754134 0.03985948141367601
+  rotation 0.0014077863881853394 0.0013362912813194526 0.9999981162297742 0.16395191111633386
+}
